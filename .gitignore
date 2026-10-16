@@ -1,0 +1,17 @@
+# Rust
+/target/
+**/*.rs.bk
+
+# Env / secrets
+.env
+.secrets/
+
+.devcontainer/volumes/
+.devcontainer/.devsy-internal/
+
+.agents
+__NOTES__.md
+.backup/
+
+.cursor
+.claude

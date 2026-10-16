@@ -1,0 +1,16 @@
+[package]
+name = "knot-sync"
+version = "0.0.0"
+edition = "2024"
+description = "Keeps Knot zones in step with zone files from Git and the mail addresses in 389ds"
+
+[dependencies]
+anyhow = "1.0.104"
+base64 = "0.23.0"
+dotenvy = "0.15.7"
+futures-util = "0.3.32"
+hickory-client = { version = "0.25.2", features = ["dnssec-ring"] }
+ldap3 = { version = "0.12.1", default-features = false, features = ["tls-rustls-ring"] }
+tokio = { version = "1.53.1", features = ["full"] }
+tracing = "0.1.44"
+tracing-subscriber = { version = "0.3.23", features = ["env-filter", "json", "fmt"] }

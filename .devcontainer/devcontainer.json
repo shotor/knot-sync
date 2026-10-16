@@ -1,0 +1,47 @@
+{
+  "name": "knot-sync",
+  "image": "ghcr.io/shotor/devcontainer/images/debian:0",
+  "features": {
+    "ghcr.io/shotor/devcontainer/features/rust:0": {},
+    "ghcr.io/shotor/devcontainer/features/docker:0": {},
+    "ghcr.io/shotor/devcontainer/features/claude:0": {}
+  },
+  "postCreateCommand": "agent-auth",
+
+  "hostRequirements": {
+    "cpus": 2,
+    "memory": "4gb",
+    "storage": "16gb"
+  },
+
+  "remoteUser": "user",
+  "updateRemoteUserUID": true,
+
+  "containerEnv": {
+    "HISTFILE": "/commandhistory/.zsh_history",
+    "CARGO_HOME": "/home/user/.cache/cargo",
+    "CARGO_TARGET_DIR": "/home/user/.cache/cargo-target"
+  },
+
+  "mounts": [
+    {
+      "type": "bind",
+      "source": "${localWorkspaceFolder}/.devcontainer/volumes/history",
+      "target": "/commandhistory"
+    },
+    {
+      "type": "bind",
+      "source": "${localWorkspaceFolder}/.devcontainer/volumes/claude",
+      "target": "/home/user/.claude"
+    }
+  ],
+
+  "customizations": {
+    "vscode": {
+      "extensions": ["rust-lang.rust-analyzer", "tombi-toml.tombi"],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh"
+      }
+    }
+  }
+}

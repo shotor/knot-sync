@@ -1,0 +1,20 @@
+# Repo commands: run `cargo <alias>` from anywhere inside the repository.
+#
+# Aliases can only expand to a single cargo subcommand (no shell, no chaining), which is
+# why `lint` is two commands and `dev` assumes cargo-watch is already installed:
+#
+#   cargo install cargo-watch --locked      # one-time, needed by `cargo dev` / `cargo test-watch`
+#   cargo lint-fmt && cargo lint-clippy     # the full lint pass
+[alias]
+# app
+dev = ["watch", "-q", "-w", "src", "-w", "Cargo.toml", "-w", ".env", "-x", "run"]
+build-release = "build --release"
+
+# test
+test-watch = ["watch", "-q", "-w", "src", "-w", "Cargo.toml", "-x", "test"]
+
+# lint (run both for a full pass; aliases can't chain)
+lint-fmt = "fmt --all -- --check"
+lint-fmt-fix = "fmt --all"
+lint-clippy = "clippy --all-targets --all-features -- -D warnings"
+lint-clippy-fix = "clippy --all-targets --all-features --fix --allow-dirty --allow-staged -- -D warnings"

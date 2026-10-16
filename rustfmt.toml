@@ -1,0 +1,19 @@
+edition = "2024"
+max_width = 100
+tab_spaces = 2
+use_small_heuristics = "Default"
+newline_style = "Unix"
+reorder_imports = true
+reorder_modules = true
+
+# The options below are NIGHTLY-ONLY. On the stable toolchain rustfmt ignores them
+# (and prints a "can't set … unstable" warning per crate). They are kept here so the
+# intended style is declared and takes effect the moment formatting runs on nightly
+# (`cargo +nightly fmt`). Do not assume they are enforced on stable.
+reorder_impl_items = true
+group_imports = "StdExternalCrate"
+condense_wildcard_suffixes = true
+format_code_in_doc_comments = true
+format_strings = true
+normalize_doc_attributes = true
+trailing_semicolon = false
