@@ -1,6 +1,6 @@
 [package]
 name = "knot-sync"
-version = "0.0.0"
+version = "0.1.0"
 edition = "2024"
 description = "Keeps Knot zones in step with zone files from Git and the mail addresses in 389ds"
 
