@@ -1,4 +1,4 @@
-FROM rust:1.99.0-alpine3.24 AS chef
+FROM rust:1.99.1-alpine3.24 AS chef
 
 RUN apk add --no-cache musl-dev \
   && cargo install cargo-chef --locked
@@ -32,7 +32,7 @@ RUN --mount=type=cache,id=cargo-registry,target=/usr/local/cargo/registry \
   && mkdir -p /out \
   && cp target/release/knot-sync /out/
 
-FROM alpine:3.24.2
+FROM alpine:3.24.3
 
 RUN apk add --no-cache ca-certificates \
   && addgroup -S knot-sync \
